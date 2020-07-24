@@ -1,0 +1,174 @@
+body {
+  background-color: #061629;
+}
+/* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 180px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #F3F6F9; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+}
+  
+/* The navigation menu links */
+.sidenav p {
+padding: 6px 8px 6px 16px;
+text-decoration: none;
+font-size: 25px;
+color: #818181;
+display: block;
+}
+  
+/* When you mouse over the navigation links, change their color */
+.sidenav p:hover {
+  color: #f1f1f1;
+}
+  
+/* Style page content */
+.main {
+  margin-left: 512px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+  background-color: #061629;
+}
+  
+.sideSection {
+    max-height: 30vh;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+}
+
+.sideSectionTitle {
+  font-size: 11.9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0 0.75rem;
+  color: #4E5A66;
+  margin-bottom: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.sideSectionIcon {
+  max-height: 45.78px;
+  font-size: 12.25px;
+  margin-left: 8px;
+  margin-bottom: 3px;
+  padding-top: 2px;
+  padding-left: 8.4px;
+  padding-top: 8.4px;
+  padding-bottom: 8.4px;
+  vertical-align: middle;
+}
+
+.sideSection span {
+    padding-left: 8.4px;
+}
+
+div i {
+  font-size: 24.5px;
+  color: #8B9AA8;
+  font-weight: 400;
+}
+
+#gear-icon {
+    font-size: 14px;
+    float: right;
+}
+
+.user {
+  background-color: #1B72CF;
+  width: 32px;
+  height: 32px;
+  float: left;
+  border-radius: 5px;
+}
+
+#username  {
+  color: white;
+  font-size: 13px;
+  text-align: center;
+}
+
+.sectionName {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 32px;
+}
+
+.pollPane {
+  height: 100%;
+  width: 312px;
+  padding: 14px;
+  position: fixed;
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 180px;
+  background-color: #ffffff;
+  overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+img {
+  width: 100%;
+  object-fit: fill;
+  /* object-position: 0px 70px; */
+}
+
+.space {
+  width: 100%;
+  height: 100px;
+  background-color: orange;
+}
+
+.mainSectionHeader {
+  width: 100%;
+  height: 90px;
+  padding-top: 11px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+.mainSectionFooter {
+  padding: 12px;
+}
+
+.floatButton {
+  height: 42px;
+  width: 42px;
+  background-color: #1B72CF;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+}
+
+.mainSectionFooter i {
+  color: white;
+}
+
+.centerIcons {
+  position: absolute;
+  left: 60%;
+}
+
+.whiteCircleBorder {
+  height: 38px;
+  width: 38px;
+  border: 3px solid white;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+}
+
+.pollingReturn {
+  float: left;
+}
+
+#closeButton {
+  float: right;
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav p {font-size: 18px;}
+}

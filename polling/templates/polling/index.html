@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BigBlueButton Prototype</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polling/style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <body>
+    <!-- Side navigation -->
+    <div class="sidenav">
+
+      <div class="sideSection">
+        <div class="sideSectionTitle">
+          Messages
+        </div>
+        <div class="sideSectionIcon">
+          <i class="material-icons">chat_bubble_outline</i>
+          <span class="sectionName">Public Chat</span>
+        </div>
+      </div>
+
+      <div class="sideSection">
+        <div class="sideSectionTitle">
+          Notes
+        </div>
+        <div class="sideSectionIcon">
+          <i class="material-icons">note</i>
+          <span class="sectionName">Shared Notes</span>
+        </div>
+      </div>
+      
+      <div class="sideSection">
+        <div class="sideSectionTitle">
+          Polling
+        </div>
+        <div class="sideSectionIcon">
+          <i class="material-icons">poll</i>
+          <span class="sectionName">Polling</span>
+        </div>
+      </div>
+
+      <div class="sideSection">
+        <div class="sideSectionTitle">
+          Users (1)
+          <span><i class="material-icons" id="gear-icon">settings</i></span>
+        </div>
+        <div class="sideSectionIcon">
+          <div class="user"><h2 id='username'>Pr</h2></div>
+          <span class="sectionName">Professor (You)</span>
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="pollPane">
+      <div class="pollingReturn">
+        <i class="material-icons">chevron_left</i>
+        <span>Polling</span>
+      </div>
+      <i class="material-icons" id="closeButton">clear</i>
+    </div>
+
+    <!-- Page content -->
+    <div class="main">
+      <div class="mainSectionHeader">
+        <span class="returnChevron">
+          <i class="material-icons">chevron_left</i>
+          <i class="material-icons">person</i>
+        </span>
+        <span>Home Room</span>
+        <i class="material-icons">more_vert</i>
+      </div>
+
+      {% load static %}
+      <img src="{% static "polling/whiteboard-mock.jpg" %}" alt="Whiteboard">
+
+      <div class="mainSectionFooter">
+        <span class="floatButton">
+          <i class="material-icons">add</i>
+        </span>
+        <span class="centerIcons">
+          <span class="whiteCircleBorder">
+            <i class="material-icons">phone_disabled</i>
+          </span>
+          <span class="whiteCircleBorder">
+            <i class="material-icons">videocam_off</i>
+          </span>
+          <span class="whiteCircleBorder">
+            <i class="material-icons">desktop_access_disabled</i>
+          </span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>
