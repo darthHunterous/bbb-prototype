@@ -1,15 +1,10 @@
 from django.shortcuts import render, redirect
-
-from .models import Question
 from .forms import PollForm
 
 def index(request):
-    polls = Question.objects.order_by('id')
+    form = PollForm()
+    context = { 'form': form }
 
-    # form = PollForm()
-    # context = { 'form': form }
-    context = { 'polls': polls }
-    
     return render(request, 'polling/index.html', context)
 
 def poll(request):
@@ -39,18 +34,9 @@ def poll(request):
             data = ["A", "B", "C", "D"]
         if options == 'abcde':
             data = ["A", "B", "C", "D", "E"]
+        if options == 'txt':
+            data = []
 
     context = { 'data': data }
 
     return render(request, 'polling/poll.html', context)
-
-### tutorial below
-def detail(request, question_id):
-    return HttpResponse("You're looking at question %s." % question_id)
-
-def results(request, question_id):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response % question_id)
-
-def vote(request, question_id):
-    return HttpResponse("You're voting on question %s." % question_id)
