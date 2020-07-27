@@ -65,69 +65,25 @@
       </div>
 
       <div class="pollPaneBody">
-        <p>Select an option below to start your poll.</p>
+        <p>Leave this panel open to see live responses to your poll. When you are ready, select 'Publish polling results' to publish the results and end the poll.</p>
+        {% if data %}
+          <div class="statsTable border rounded" style="padding: 14px;">
+            <div class="container">
+              {% for item in data %}
+              <div class="row">
+                <div class="font-weight-bold col-sm-3 border-right d-flex justify-content-start p-2">{{ item }}</div>
+                <div class="col-sm-6 d-flex justify-content-center align-items-center p-2">0</div>
+                <div class="col-sm-3 d-flex justify-content-end align-items-center p-2">0%</div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <p>Done</p>
+        {% endif %}
+        <button type="button" class="btn btn-primary btn-block btn-sm">Publish polling results</button>
         
-        <div class="container" style="padding: 0%;">
-          <div class="form-row">
-            <div class="col">
-              <a class="btn btn-outline-secondary btn-block btn-sm" href="poll?options=yn" role="button">Yes / No</a>
-            </div>
-            <div class="col">
-              <a class="btn btn-outline-secondary btn-block btn-sm" href="poll?options=tf" role="button">True / False</a>
-            </div>
-          </div>
-          <div class="form-row mt-2">
-            <div class="col">
-              <a class="btn btn-outline-secondary btn-block btn-sm" href="poll?options=ab" role="button">A / B</a>
-            </div>
-            <div class="col">
-              <a class="btn btn-outline-secondary btn-block btn-sm" href="poll?options=abc" role="button">A / B / C</a>
-            </div>
-          </div>
-          <div class="form-row mt-2">
-            <div class="col">
-              <a class="btn btn-outline-secondary btn-block btn-sm" href="poll?options=abcd" role="button">A / B / C / D</a>
-            </div>
-            <div class="col">
-              <a class="btn btn-outline-secondary btn-block btn-sm" href="poll?options=abcde" role="button">A / B / C / D / E</a>
-            </div>
-          </div>
-        </div>
-        </div>
-        <p>To create a custom poll, select the button below and input your options.</p>
-        <!-- <button class="btn btn-outline-secondary btn-block btn-sm" type="submit">Custom poll</button> -->
-
-        <p>
-          <a class="btn btn-outline-secondary btn-block btn-sm" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Custom poll</a>
-        </p>
-        <div class="row">
-          <div class="col">
-            <div class="collapse multi-collapse" id="multiCollapseExample1">
-              <form action="{% url 'poll' %}" method="POST" role="form">
-                {% csrf_token %}
-                <!-- <div class="form-group">
-                  {{ form.text }}
-                </div>
-                <div class="form-group">
-                  {{ form.text }}
-                </div>
-                <div class="form-group">
-                  {{ form.text }}
-                </div>
-                <div class="form-group">
-                  {{ form.text }}
-                </div>
-                <div class="form-group">
-                  {{ form.text }}
-                </div> -->
-                {{ form }}
-                <button class="btn btn-primary btn-block btn-sm mb-2" type="submit">Start custom poll</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      To create a text poll, select the button below
-      <a class="btn btn-outline-secondary btn-block btn-sm" href="poll?options=txt" role="button">Text Poll</a>
+        <p class="font-weight-bold">Users Response</p>
+        
       </div>
     </div>
 
