@@ -1,0 +1,58 @@
+{% include 'polling/components/header.html' %}
+{% include 'polling/components/sidenav.html' %}
+
+<div class="pollPane">
+
+  {% include 'polling/components/pollPaneHeader.html' %}
+
+  <div class="pollPaneBody">
+    <p>Select an option below to start your poll.</p>
+    
+    <div class="container" style="padding: 0%;">
+      <div class="form-row">
+        <div class="col">
+          <a class="btn btn-outline-secondary btn-block btn-sm" href="poll?options=yn" role="button">Yes / No</a>
+        </div>
+        <div class="col">
+          <a class="btn btn-outline-secondary btn-block btn-sm" href="poll?options=tf" role="button">True / False</a>
+        </div>
+      </div>
+      <div class="form-row mt-2">
+        <div class="col">
+          <a class="btn btn-outline-secondary btn-block btn-sm" href="poll?options=ab" role="button">A / B</a>
+        </div>
+        <div class="col">
+          <a class="btn btn-outline-secondary btn-block btn-sm" href="poll?options=abc" role="button">A / B / C</a>
+        </div>
+      </div>
+      <div class="form-row mt-2">
+        <div class="col">
+          <a class="btn btn-outline-secondary btn-block btn-sm" href="poll?options=abcd" role="button">A / B / C / D</a>
+        </div>
+        <div class="col">
+          <a class="btn btn-outline-secondary btn-block btn-sm" href="poll?options=abcde" role="button">A / B / C / D / E</a>
+        </div>
+      </div>
+    </div>
+    <p>To create a custom poll, select the button below and input your options.</p>
+
+    <p>
+      <a class="btn btn-outline-secondary btn-block btn-sm" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Custom poll</a>
+    </p>
+    <div class="row">
+      <div class="col">
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+          <form action="{% url 'poll' %}" method="POST" role="form">
+            {% csrf_token %}
+            {{ form }}
+            <button class="btn btn-primary btn-block btn-sm mb-2" type="submit">Start custom poll</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% include 'polling/components/pageContent.html' %}
+{% include 'polling/components/footer.html' %}

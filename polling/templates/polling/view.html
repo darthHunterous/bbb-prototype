@@ -1,0 +1,32 @@
+{% include 'polling/components/header.html' %}
+{% include 'polling/components/sidenav.html' %} 
+    
+<div class="pollPane">
+
+  {% include 'polling/components/pollPaneHeader.html' %}
+
+  <div class="pollPaneBody">
+    <p>Leave this panel open to see live responses to your poll. When you are ready, select 'Publish polling results' to publish the results and end the poll.</p>
+    <div class="statsTable border rounded" style="padding: 14px;">
+      <div class="container">
+        {% for item in data %}
+        <div class="row">
+          <div class="font-weight-bold col-sm-3 border-right d-flex justify-content-start p-2">{{ item }}</div>
+          <div class="col-sm-6 d-flex justify-content-center align-items-center p-2">0</div>
+          <div class="col-sm-3 d-flex justify-content-end align-items-center p-2">0%</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <p>Done</p>
+
+    <button type="button" class="btn btn-primary btn-block btn-sm">Publish polling results</button>
+    
+    <p class="font-weight-bold">Users Response</p>
+  </div>
+
+</div>
+
+{% include 'polling/components/pageContent.html' %}
+{% include 'polling/components/footer.html' %}
