@@ -7,6 +7,38 @@
 
   <div class="pollPaneBody">
     <p>Polls from current session:</p>
+
+    {% for poll in polls %}
+      <button type="button" class="btn btn-outline-secondary btn-sm btn-block mt-1 mb-1" data-toggle="modal" data-target="#Modal{{poll.id}}" data-backdrop="false">
+        {{ poll }}
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="Modal{{poll.id}}" tabindex="-1" role="dialog" aria-labelledby="Modal{{poll.id}}Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="Modal{{poll.id}}Label">Are you sure?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Launching poll "{{ poll }}"
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Launch Poll</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+    <p>Click on a poll above to launch</p>
+    
+    <button type="button" class="btn btn-primary btn-block">Load a new poll</button>
+    
   </div>
 
 </div>
