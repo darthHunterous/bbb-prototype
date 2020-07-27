@@ -1,7 +1,16 @@
 {% include 'polling/components/header.html' %}
-{% include 'polling/components/sidenav.html' %}
 
-<div class="pollPane">
+{% include 'polling/components/sidenav.html' %}
+  <div class="col-sm-2 bg-danger">
+    One of three columns
+  </div>
+  <div class="col-sm bg-white">
+    One of three columns
+  </div>
+</div>
+</div>
+
+<!-- <div class="pollPane">
 
   {% include 'polling/components/pollPaneHeader.html' %}
 
@@ -13,7 +22,6 @@
         {{ poll }}
       </button>
 
-      <!-- Modal -->
       <div class="modal fade" id="Modal{{poll.id}}" tabindex="-1" role="dialog" aria-labelledby="Modal{{poll.id}}Label" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -41,7 +49,7 @@
     
   </div>
 
-</div>
+</div> -->
 
-{% include 'polling/components/pageContent.html' %}
+<!-- {% include 'polling/components/pageContent.html' %} -->
 {% include 'polling/components/footer.html' %}
