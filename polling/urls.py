@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('create', views.create, name='create'),
     path('poll', views.poll, name='poll'),
 
     # ex: /polls/5/

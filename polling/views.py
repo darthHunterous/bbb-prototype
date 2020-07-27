@@ -7,8 +7,13 @@ def index(request):
     polls = Question.objects.order_by('id')	
 
     context = { 'polls': polls }
-    
+
     return render(request, 'polling/index.html', context)
+
+def create(request):
+    form = PollForm()
+    context = { 'form': form }
+    return render(request, 'polling/create.html', context)
 
 def poll(request):
     if request.method == "POST":
