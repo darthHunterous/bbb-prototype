@@ -5,45 +5,44 @@ from .forms import PollForm
 
 def index(request):
     polls = Question.objects.order_by('id')	
-
     context = { 'polls': polls }
 
     return render(request, 'polling/index.html', context)
 
 def create(request):
-    form = PollForm()
-    context = { 'form': form }
-    return render(request, 'polling/create.html', context)
+    if request.method == "POST":
+        form = PollForm(request.POST)
+
+        if form.is_valid():
+            new_question = Question(question_text=request.POST['title'],
+                                    free_answers=request.POST.get('freeAnswers', False))
+            new_question.save()
+
+            if request.POST['option01'] != '':
+                new_question.choice_set.create(choice_text=request.POST['option01'],
+                                               votes=0)
+            if request.POST['option02'] != '':
+                new_question.choice_set.create(choice_text=request.POST['option02'],
+                                               votes=0)
+            if request.POST['option03'] != '':
+                new_question.choice_set.create(choice_text=request.POST['option03'],
+                                               votes=0)
+            if request.POST['option04'] != '':
+                new_question.choice_set.create(choice_text=request.POST['option04'],
+                                               votes=0)
+            if request.POST['option05'] != '':
+                new_question.choice_set.create(choice_text=request.POST['option05'],
+                                               votes=0)
+
+        
+        return redirect('index')
+    else:
+        form = PollForm()
+        context = { 'form': form }
+
+        return render(request, 'polling/create.html', context)
 
 def view(request):
-    if request.method == "POST":
-        data = []
-        if request.POST['option01'] != '':
-            data.append(request.POST['option01'])
-        if request.POST['option02'] != '':
-            data.append(request.POST['option02'])
-        if request.POST['option03'] != '':
-            data.append(request.POST['option03'])
-        if request.POST['option04'] != '':
-            data.append(request.POST['option04'])
-        if request.POST['option05'] != '':
-            data.append(request.POST['option05'])
-    else:
-        options = request.GET.get("options")
-        if options == 'yn':
-            data = ["Yes", "No"]
-        if options == 'tf':
-            data = ["True", "False"]
-        if options == 'ab':
-            data = ["A", "B"]
-        if options == 'abc':
-            data = ["A", "B", "C"]
-        if options == 'abcd':
-            data = ["A", "B", "C", "D"]
-        if options == 'abcde':
-            data = ["A", "B", "C", "D", "E"]
-        if options == 'txt':
-            data = []
 
     context = { 'data': data }
 
