@@ -15,7 +15,7 @@ def create(request):
     context = { 'form': form }
     return render(request, 'polling/create.html', context)
 
-def poll(request):
+def view(request):
     if request.method == "POST":
         data = []
         if request.POST['option01'] != '':
@@ -47,7 +47,7 @@ def poll(request):
 
     context = { 'data': data }
 
-    return render(request, 'polling/poll.html', context)
+    return render(request, 'polling/view.html', context)
 
 ### tutorial below	
 def detail(request, question_id):	
