@@ -36,7 +36,7 @@
       </div>
       <div class="form-row mt-2">
         <div class="col">
-          <button class="btn btn-outline-danger btn-block btn-sm" id="abcd" type="reset">Reset Answers</button>
+          <button class="btn btn-outline-danger btn-block btn-sm" id="resetButton" type="reset">Reset Answers</button>
         </div>
       </div>
     </div>
@@ -45,8 +45,6 @@
     <button class="btn btn-primary btn-block btn-sm" type="submit">Save poll</button>
   </form>
 </div>
-
-    
 
   </div>
 </div>
@@ -65,40 +63,79 @@
   var option04 = document.getElementById("option04");
   var option05 = document.getElementById("option05");
 
+  var freeAnswers = document.getElementById("freeAnswers");
+  var resetButton = document.getElementById("resetButton");
+
   yn.addEventListener("click", () => {
-    option01.value = "Yes";
-    option02.value = "No";
+    if (!freeAnswers.checked) {
+      option01.value = "Yes";
+      option02.value = "No";
+    }
   });
 
   tf.addEventListener("click", () => {
-    option01.value = "True";
-    option02.value = "False";
+    if (!freeAnswers.checked) {
+      option01.value = "True";
+      option02.value = "False";
+    }
   });
 
   ab.addEventListener("click", () => {
-    option01.value = "A";
-    option02.value = "B";
+    if (!freeAnswers.checked) {
+      option01.value = "A";
+      option02.value = "B";
+    }
   });
 
   abc.addEventListener("click", () => {
-    option01.value = "A";
-    option02.value = "B";
-    option03.value = "C";
+    if (!freeAnswers.checked) {
+      option01.value = "A";
+      option02.value = "B";
+      option03.value = "C";
+    }
   });
 
   abcd.addEventListener("click", () => {
-    option01.value = "A";
-    option02.value = "B";
-    option03.value = "C";
-    option04.value = "D";
+    if (!freeAnswers.checked) {
+      option01.value = "A";
+      option02.value = "B";
+      option03.value = "C";
+      option04.value = "D";
+    }
   });
 
   abcde.addEventListener("click", () => {
-    option01.value = "A";
-    option02.value = "B";
-    option03.value = "C";
-    option04.value = "D";
-    option05.value = "E";
+    if (!freeAnswers.checked) {
+      option01.value = "A";
+      option02.value = "B";
+      option03.value = "C";
+      option04.value = "D";
+      option05.value = "E";
+    }
+  });
+
+  freeAnswers.addEventListener("click", () => {
+    option01.disabled = !option01.disabled;
+    option02.disabled = !option02.disabled;
+    option03.disabled = !option03.disabled;
+    option04.disabled = !option04.disabled;
+    option05.disabled = !option05.disabled;
+
+    if (freeAnswers.checked) {
+      option01.value = "";
+      option02.value = "";
+      option03.value = "";
+      option04.value = "";
+      option05.value = "";
+    }
+  });
+
+  resetButton.addEventListener("click", () => {
+    option01.disabled = false;
+    option02.disabled = false;
+    option03.disabled = false;
+    option04.disabled = false;
+    option05.disabled = false;
   });
 </script>
 

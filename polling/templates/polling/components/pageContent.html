@@ -11,20 +11,25 @@
   {% load static %}
   <img src="{% static "polling/whiteboard-mock.jpg" %}" alt="Whiteboard">
 
-  <div class="mainSectionFooter">
-    <span class="floatButton">
-      <i class="material-icons">add</i>
-    </span>
-    <span class="centerIcons">
-      <span class="whiteCircleBorder">
-        <i class="material-icons">phone_disabled</i>
-      </span>
-      <span class="whiteCircleBorder">
-        <i class="material-icons">videocam_off</i>
-      </span>
-      <span class="whiteCircleBorder">
-        <i class="material-icons">desktop_access_disabled</i>
-      </span>
-    </span>
+  <div class="mainSectionFooter container-fluid mb-1" style="height: 60px;">
+    <div class="row h-100">
+      <div class="col-sm-4 d-flex justify-content-start align-items-end">
+        <button class="btn btn-primary d-flex justify-content-center align-items-center rounded-circle p-0 h-100" style="width: 60px;">
+          <i class="material-icons">add</i>
+        </button>
+      </div>
+      <div class="col-sm-4 d-flex justify-content-center align-items-end">
+        <button class="btn btn-outline-secondary d-flex justify-content-center align-items-center rounded-circle p-0 h-100 ml-2 mr-2" style="width: 60px; border-width: 3px;">
+          <i class="material-icons">phone_disabled</i>
+        </button>
+        <button class="btn btn-outline-secondary d-flex justify-content-center align-items-center rounded-circle p-0 h-100 ml-2 mr-2" style="width: 60px; border-width: 3px;">
+          <i class="material-icons">videocam_off</i>
+        </button>
+        <button class="btn btn-outline-secondary d-flex justify-content-center align-items-center rounded-circle p-0 h-100 ml-2 mr-2" style="width: 60px; border-width: 3px;">
+          <i class="material-icons">desktop_access_disabled</i>
+        </button>
+      </div>
+    </div>
   </div>
+
 </div>
