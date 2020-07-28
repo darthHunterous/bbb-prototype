@@ -2,55 +2,105 @@
 {% include 'polling/components/sidenav.html' %}
 {% include 'polling/components/pollPane.html' %}
 
-    <div class="mt-3 mb-3">Select an option below to start your poll.</div>
-    
-    <div class="container" style="padding: 0%;">
+<div class="mt-3">
+  <form action="{% url 'create' %}" method="POST" role="form">
+    {% csrf_token %}
+    {{ form }}
+
+    <div class="mt-3 mb-3">Click below for quick answer setup:</div>
+
+    <div class="container quickAnswers" style="padding: 0%;">
       <div class="form-row">
         <div class="col">
-          <a class="btn btn-outline-secondary btn-block btn-sm" href="view?options=yn" role="button">Yes / No</a>
+          <button class="btn btn-outline-secondary btn-block btn-sm" id="yn" type="button">Yes / No</button>
         </div>
         <div class="col">
-          <a class="btn btn-outline-secondary btn-block btn-sm" href="view?options=tf" role="button">True / False</a>
+          <button class="btn btn-outline-secondary btn-block btn-sm" id="tf" type="button">True / False</button>
         </div>
       </div>
       <div class="form-row mt-2">
         <div class="col">
-          <a class="btn btn-outline-secondary btn-block btn-sm" href="view?options=ab" role="button">A / B</a>
+          <button class="btn btn-outline-secondary btn-block btn-sm" id="ab" type="button">A / B</button>
         </div>
         <div class="col">
-          <a class="btn btn-outline-secondary btn-block btn-sm" href="view?options=abc" role="button">A / B / C</a>
+          <button class="btn btn-outline-secondary btn-block btn-sm" id="abc" type="button">A / B / C</button>
         </div>
       </div>
       <div class="form-row mt-2">
         <div class="col">
-          <a class="btn btn-outline-secondary btn-block btn-sm" href="view?options=abcd" role="button">A / B / C / D</a>
+          <button class="btn btn-outline-secondary btn-block btn-sm" id="abcd" type="button">A / B / C / D</button>
         </div>
         <div class="col">
-          <a class="btn btn-outline-secondary btn-block btn-sm" href="view?options=abcde" role="button">A / B / C / D / E</a>
+          <button class="btn btn-outline-secondary btn-block btn-sm" id="abcde" type="button">A / B / C / D / E</button>
+        </div>
+      </div>
+      <div class="form-row mt-2">
+        <div class="col">
+          <button class="btn btn-outline-danger btn-block btn-sm" id="abcd" type="reset">Reset Answers</button>
         </div>
       </div>
     </div>
-    <div class="mt-3 mb-3">To create a custom poll, select the button below and input your options.</div>
-
-    <p>
-      <a class="btn btn-outline-secondary btn-block btn-sm" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Custom poll</a>
-    </p>
-    <div class="row">
-      <div class="col">
-        <div class="collapse multi-collapse" id="multiCollapseExample1">
-          <form action="{% url 'create' %}" method="POST" role="form">
-            {% csrf_token %}
-            {{ form }}
-            <button class="btn btn-primary btn-block btn-sm mb-2" type="submit">Start custom poll</button>
-          </form>
-        </div>
-      </div>
-      <div class="mt-3 mb-3">To create a text poll, select the button below.</div>
-      <a class="btn btn-outline-secondary btn-block btn-sm" aria-expanded="false" href="view?options=txt" role="button">Text Poll</a>
-    </div>
-  </div>
-
+    
+    <div class="mt-4 mb-2">Save poll and return to list:</div>
+    <button class="btn btn-primary btn-block btn-sm" type="submit">Save poll</button>
+  </form>
 </div>
+
+    
+
+  </div>
+</div>
+
+<script>
+  var yn = document.getElementById("yn");
+  var tf = document.getElementById("tf");
+  var ab = document.getElementById("ab");
+  var abc = document.getElementById("abc");
+  var abcd = document.getElementById("abcd");
+  var abcde = document.getElementById("abcde");
+  
+  var option01 = document.getElementById("option01");
+  var option02 = document.getElementById("option02");
+  var option03 = document.getElementById("option03");
+  var option04 = document.getElementById("option04");
+  var option05 = document.getElementById("option05");
+
+  yn.addEventListener("click", () => {
+    option01.value = "Yes";
+    option02.value = "No";
+  });
+
+  tf.addEventListener("click", () => {
+    option01.value = "True";
+    option02.value = "False";
+  });
+
+  ab.addEventListener("click", () => {
+    option01.value = "A";
+    option02.value = "B";
+  });
+
+  abc.addEventListener("click", () => {
+    option01.value = "A";
+    option02.value = "B";
+    option03.value = "C";
+  });
+
+  abcd.addEventListener("click", () => {
+    option01.value = "A";
+    option02.value = "B";
+    option03.value = "C";
+    option04.value = "D";
+  });
+
+  abcde.addEventListener("click", () => {
+    option01.value = "A";
+    option02.value = "B";
+    option03.value = "C";
+    option04.value = "D";
+    option05.value = "E";
+  });
+</script>
 
 {% include 'polling/components/pageContent.html' %}
 {% include 'polling/components/footer.html' %}
