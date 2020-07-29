@@ -4,7 +4,7 @@ from .models import Question
 from .forms import PollForm
 
 def index(request):
-    polls = Question.objects.order_by('id')	
+    polls = Question.objects.order_by('id')
     context = { 'polls': polls }
 
     return render(request, 'polling/index.html', context)
@@ -14,8 +14,14 @@ def create(request):
         form = PollForm(request.POST)
 
         if form.is_valid():
+            # Se o anonymous_answers for 'on', significa True
+            anonymous_answers_fixed=request.POST.get('anonymousAnswers', False)
+            if (anonymous_answers_fixed != False):
+                anonymous_answers_fixed = True
+
             new_question = Question(question_text=request.POST['title'],
-                                    free_answers=request.POST.get('freeAnswers', False))
+                                    free_answers=request.POST.get('freeAnswers', False),
+                                    anonymous_answers=anonymous_answers_fixed)
             new_question.save()
 
             if request.POST['option01'] != '':
