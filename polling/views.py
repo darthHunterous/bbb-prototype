@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 
 from .models import Question	
 from .forms import PollForm
@@ -55,7 +56,7 @@ def view(request):
     return render(request, 'polling/view.html', context)
 
 ### tutorial below	
-def detail(request, question_id):	
+def detail(request, question_id):
     return HttpResponse("You're looking at question %s." % question_id)	
 
 def results(request, question_id):	
