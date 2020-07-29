@@ -22,3 +22,6 @@ class PollForm(forms.Form):
     freeAnswers = forms.BooleanField(label='Allow students to answer freely', required=False,
         widget=forms.CheckboxInput(
             attrs={'class' : 'ml-2', 'id': 'freeAnswers'}))
+    anonymousAnswers = forms.BooleanField(label='Allow students to answer anonymously', required=False,
+        widget=forms.CheckboxInput(
+            attrs={'class' : 'ml-2', 'id': 'anonymousAnswers'}))
