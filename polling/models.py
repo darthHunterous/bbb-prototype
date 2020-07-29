@@ -5,7 +5,8 @@ class Question(models.Model):
     free_answers = models.BooleanField(default=False)
     launched = models.BooleanField(default=False)
     anonymous_answers = models.BooleanField(default=False)
-
+    total_votes = models.IntegerField(default=0)
+    
     def __str__(self):
         return self.question_text
 
