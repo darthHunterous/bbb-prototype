@@ -51,6 +51,20 @@ def create(request):
 
         return render(request, 'polling/create.html', context)
 
+def launch(request, poll_id):
+    poll = Question.objects.get(pk=poll_id)
+    poll.launched = True
+    poll.save()
+
+    return redirect('index')
+
+def unlaunch(request, poll_id):
+    poll = Question.objects.get(pk=poll_id)
+    poll.launched = False
+    poll.save()
+
+    return redirect('index')
+
 def view(request):
 
     context = { 'data': data }
