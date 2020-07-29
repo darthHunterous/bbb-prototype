@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-from .models import Question	
+from .models import Question, User, Vote, Choice
 from .forms import PollForm
 
 def index(request):
     unlaunched_polls = Question.objects.filter(launched=False)
     launched_polls = Question.objects.filter(launched=True)
+    users = User.objects.all()
 
-    context = { 'unlaunched_polls' : unlaunched_polls, 'launched_polls': launched_polls }
+    context = { 'unlaunched_polls' : unlaunched_polls, 'launched_polls': launched_polls, 'users': users, 'user_id': 1 }
 
     return render(request, 'polling/index.html', context)
 
@@ -118,19 +119,33 @@ def edit(request, poll_id):
 
         return render(request, 'polling/edit.html', context)
 
-def view(request):
+def user(request, user_id):
+    users = User.objects.all()
+    launched_polls = Question.objects.filter(launched=True)
+    answered_polls = []
+    unanswered_polls = []
 
-    context = { 'data': data }
+    for poll in launched_polls:
+        answered = False
+        for choice in poll.choice_set.all():
+            for vote in choice.vote_set.all():
+                if int(vote.user.id) == int(user_id):
+                    answered_polls.append(poll)
+                    answered = True
+        if not answered:
+            unanswered_polls.append(poll)
 
-    return render(request, 'polling/view.html', context)
+    context = { 'user_id': int(user_id), 'users': users, 'answered_polls': answered_polls, 'unanswered_polls': unanswered_polls }
+    return render(request, 'polling/user.html', context)
 
-### tutorial below	
-def detail(request, question_id):
-    return HttpResponse("You're looking at question %s." % question_id)	
+def vote(request):
+    user_id = request.GET.get("userID")
+    choice_id = request.GET.get('choiceID')
 
-def results(request, question_id):	
-    response = "You're looking at the results of question %s."	
-    return HttpResponse(response % question_id)	
+    user = User.objects.filter(pk=user_id)[0]
+    choice = Choice.objects.filter(pk=choice_id)[0]
 
-def vote(request, question_id):	
-    return HttpResponse("You're voting on question %s." % question_id) 
+    voteToRegister = Vote(choice=choice, user=user)
+    voteToRegister.save()
+
+    return redirect('user/' + user_id)

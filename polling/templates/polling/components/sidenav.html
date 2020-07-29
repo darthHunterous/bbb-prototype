@@ -36,13 +36,28 @@
   
     <div class="sideSection">
       <div class="mt-3 mb-2 d-flex align-items-center justify-content-between">
-        <div class="sideSectionTitle">Users (1)</div>
+        <div class="sideSectionTitle">Users ({{ users.count }})</div>
         <i class="material-icons" id="gear-icon">settings</i>
       </div>
-      <div class="sideSectionIcon d-flex align-items-center pl-2">
-        <div class="user d-flex align-items-center justify-content-center"><span id='username'>Pr</span></div>
-        <span class="sectionName ml-2">Professor (You)</span>
-      </div>
+      {% for user in users %}
+      {% if user.is_professor %}
+      <a class="btn btn-outline-secondary btn-block border-0 p-1" href ="/" role="button" >
+      {% else %}
+      <a class="btn btn-outline-secondary btn-block border-0 p-1" href ="{% url 'user' user.id %}" role="button" >
+      {% endif %}
+        <div class="sideSectionIcon d-flex align-items-center pl-2 mb-2">
+          <div class="user d-flex align-items-center justify-content-center">
+            <span id='username'>{{ user.username|slice:":2 " }}</span>
+          </div>
+          <span class="sectionName ml-2">
+            {{ user.username }}
+          </span>
+          {% if user.id == user_id %}
+          <span class="sectionName">&nbsp;(You)</span>
+          {% endif %}
+        </div>
+      </a>
+      {% endfor %}
     </div>
 
   </div>

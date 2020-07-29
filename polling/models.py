@@ -19,7 +19,8 @@ class Choice(models.Model):
 
 class User(models.Model):
     username = models.CharField(max_length=25)
-
+    is_professor = models.BooleanField(default=False)
+    
     def __str__(self):
         return self.username
 
