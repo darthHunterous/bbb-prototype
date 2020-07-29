@@ -23,7 +23,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <a class="btn btn-primary" href ="{% url 'launch' poll.id %}" role= "button" >Launch Poll</a>
+          <a class="btn btn-success" href ="{% url 'edit' poll.id %}" role="button" >Edit Poll</a>
+          <a class="btn btn-primary" href ="{% url 'launch' poll.id %}" role="button" >Launch Poll</a>
         </div>
       </div>
     </div>
@@ -32,7 +33,7 @@
 {% endfor%}
  
 <div class="mt-3 mb-3">
-  Click on a poll above to launch.
+  Click on a poll above to launch or edit.
   <hr>
 </div>
 {% endif %}
@@ -65,7 +66,7 @@
   </div>
 
 {% endfor%}
-<div class="mt-3 mb-3">Click on a poll above to see the results </div>      
+<div class="mt-3 mb-3">Click on a poll above to see the results or unlaunch.</div>      
 {% endif %}
 
 <a class="mt-auto btn btn-primary btn-block" href="create" role="button">Load a new poll</a>

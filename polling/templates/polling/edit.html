@@ -1,0 +1,157 @@
+{% include 'polling/components/header.html' %}
+{% include 'polling/components/sidenav.html' %}
+{% include 'polling/components/pollPane.html' %}
+
+<div class="mt-3">
+  <form action="{% url 'edit' poll.id %}" method="POST" role="form">
+    {% csrf_token %}
+    {{ form }}
+
+    <div class="mt-3 mb-3">Click below for quick answer setup:</div>
+
+    <div class="container quickAnswers" style="padding: 0%;">
+      <div class="form-row">
+        <div class="col">
+          <button class="btn btn-outline-secondary btn-block btn-sm" id="yn" type="button">Yes / No</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-outline-secondary btn-block btn-sm" id="tf" type="button">True / False</button>
+        </div>
+      </div>
+      <div class="form-row mt-2">
+        <div class="col">
+          <button class="btn btn-outline-secondary btn-block btn-sm" id="ab" type="button">A / B</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-outline-secondary btn-block btn-sm" id="abc" type="button">A / B / C</button>
+        </div>
+      </div>
+      <div class="form-row mt-2">
+        <div class="col">
+          <button class="btn btn-outline-secondary btn-block btn-sm" id="abcd" type="button">A / B / C / D</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-outline-secondary btn-block btn-sm" id="abcde" type="button">A / B / C / D / E</button>
+        </div>
+      </div>
+      <div class="form-row mt-2">
+        <div class="col">
+          <button class="btn btn-outline-danger btn-block btn-sm" id="resetButton" type="reset">Reset Answers</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mt-4 mb-2">Save poll and return to list:</div>
+    <button class="btn btn-primary btn-block btn-sm" type="submit">Save poll</button>
+  </form>
+</div>
+
+  </div>
+</div>
+
+<script>
+  var yn = document.getElementById("yn");
+  var tf = document.getElementById("tf");
+  var ab = document.getElementById("ab");
+  var abc = document.getElementById("abc");
+  var abcd = document.getElementById("abcd");
+  var abcde = document.getElementById("abcde");
+  
+  var option01 = document.getElementById("option01");
+  var option02 = document.getElementById("option02");
+  var option03 = document.getElementById("option03");
+  var option04 = document.getElementById("option04");
+  var option05 = document.getElementById("option05");
+
+  var freeAnswers = document.getElementById("freeAnswers");
+  var resetButton = document.getElementById("resetButton");
+  var anonymousAnswers = document.getElementById("anonymousAnswers");
+
+  yn.addEventListener("click", () => {
+    if (!freeAnswers.checked) {
+      option01.value = "Yes";
+      option02.value = "No";
+      option03.value = "";
+      option04.value = "";
+      option05.value = "";
+    }
+  });
+
+  tf.addEventListener("click", () => {
+    if (!freeAnswers.checked) {
+      option01.value = "True";
+      option02.value = "False";
+      option03.value = "";
+      option04.value = "";
+      option05.value = "";
+    }
+  });
+
+  ab.addEventListener("click", () => {
+    if (!freeAnswers.checked) {
+      option01.value = "A";
+      option02.value = "B";
+      option03.value = "";
+      option04.value = "";
+      option05.value = "";
+    }
+  });
+
+  abc.addEventListener("click", () => {
+    if (!freeAnswers.checked) {
+      option01.value = "A";
+      option02.value = "B";
+      option03.value = "C";
+      option04.value = "";
+      option05.value = "";
+    }
+  });
+
+  abcd.addEventListener("click", () => {
+    if (!freeAnswers.checked) {
+      option01.value = "A";
+      option02.value = "B";
+      option03.value = "C";
+      option04.value = "D";
+      option05.value = "";
+    }
+  });
+
+  abcde.addEventListener("click", () => {
+    if (!freeAnswers.checked) {
+      option01.value = "A";
+      option02.value = "B";
+      option03.value = "C";
+      option04.value = "D";
+      option05.value = "E";
+    }
+  });
+
+  freeAnswers.addEventListener("click", () => {
+    option01.disabled = !option01.disabled;
+    option02.disabled = !option02.disabled;
+    option03.disabled = !option03.disabled;
+    option04.disabled = !option04.disabled;
+    option05.disabled = !option05.disabled;
+
+    if (freeAnswers.checked) {
+      option01.value = "";
+      option02.value = "";
+      option03.value = "";
+      option04.value = "";
+      option05.value = "";
+      freeAnswers.value = true;
+    }
+  });
+
+  resetButton.addEventListener("click", () => {
+    option01.disabled = false;
+    option02.disabled = false;
+    option03.disabled = false;
+    option04.disabled = false;
+    option05.disabled = false;
+  });
+</script>
+
+{% include 'polling/components/pageContent.html' %}
+{% include 'polling/components/footer.html' %}

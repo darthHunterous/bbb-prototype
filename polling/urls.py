@@ -8,6 +8,7 @@ urlpatterns = [
     path('view', views.view, name='view'),
     path('launch/<poll_id>', views.launch, name='launch'),
     path('unlaunch/<poll_id>', views.unlaunch, name='unlaunch'),
+    path('edit/<poll_id>', views.edit, name="edit"),
 
     # ex: /polls/5/
     path('<int:question_id>/', views.detail, name='detail'),
