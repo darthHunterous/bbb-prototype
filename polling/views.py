@@ -5,8 +5,10 @@ from .models import Question
 from .forms import PollForm
 
 def index(request):
-    polls = Question.objects.order_by('id')
-    context = { 'polls': polls }
+    unlaunched_polls = Question.objects.filter(launched=False)
+    launched_polls = Question.objects.filter(launched=True)
+
+    context = { 'unlaunched_polls' : unlaunched_polls, 'launched_polls': launched_polls }
 
     return render(request, 'polling/index.html', context)
 
