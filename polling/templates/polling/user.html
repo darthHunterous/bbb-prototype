@@ -74,7 +74,11 @@
           {% for answer in poll.choice_set.all %}
             <ul class="list-group">
               {% for vote in answer.vote_set.all %}
-              <li class="list-group-item"><div class="font-weight-bold">{{ vote.user }}</div> - {{ answer}}</li>
+                {% if poll.anonymous_answers == False %}
+                  <li class="list-group-item"><div class="font-weight-bold">{{ vote.user }}</div> - {{ answer}}</li>
+                {% else %}
+                  <li class="list-group-item"><div class="font-weight-bold">Hidden User</div> - {{ answer}}</li>
+                {% endif %}
               {% endfor %}
             </ul>
           {% endfor %}
