@@ -1,0 +1,16 @@
+REQUISITOS
+
+Python 3.6.9
+Django 3.0.8
+
+O Django pode ser instalado pelo seguinte comando no terminal em Linux (sem as aspas): "pip3 install django"
+
+EXECUÇÃO
+
+Na pasta onde se localiza este README, digite os seguintes comandos (sem as aspas): 
+
+"source venv/bin/activate"
+
+"python3 manage.py runserver"
+
+Feito isso, o próprio terminal dará as instruções para abrir o site-protótipo no navegador, te encaminhando para o seguinte endereço: "http://127.0.0.1:8000/"
