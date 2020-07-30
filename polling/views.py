@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
+from django.db.models import F
 from .models import Question, User, Vote, Choice
 from .forms import PollForm
 
@@ -144,8 +144,10 @@ def vote(request):
 
     user = User.objects.filter(pk=user_id)[0]
     choice = Choice.objects.filter(pk=choice_id)[0]
-
+    print(choice.question.total_votes)
+    choice.question.total_votes +=1
+    choice.question.save()
     voteToRegister = Vote(choice=choice, user=user)
     voteToRegister.save()
-
+    
     return redirect('user/' + user_id)
